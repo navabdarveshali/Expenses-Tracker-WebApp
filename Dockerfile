@@ -7,13 +7,14 @@ COPY . /app
 
 RUN mvn clean install -DskipTests=true
 
-
+#optimized docker image
 
 FROM openjdk:17-alpine
 
 WORKDIR /app
 
 COPY --from=builder /app/target/*.jar /app/target/expenseapp.jar
+
 
 EXPOSE 8080
 
